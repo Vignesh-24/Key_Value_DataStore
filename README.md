@@ -20,7 +20,7 @@
 
 
 
-### Constructors
+### CONSTRUCTORS
 
 ```java
 public DataStore(String DIRECTORY_PATH)
@@ -46,7 +46,7 @@ public DataStore()
 
 #
 
-## Usage
+## USAGE
 
 ```java
 DataStore ds=new DataStore();
@@ -57,7 +57,7 @@ DataStore ds=new DataStore("E:\Java Projects");
 
 #
 
-## Methods available to use
+## PUBLIC METHODS AVAILABLE
 
 
 ```java
@@ -146,44 +146,42 @@ public void saveAndClose()
 #
 
 
-## Usage
+## USAGE
 
 ```java
 
 JSONObject jsonObject=new JSONObject();
-		//Arbitrary JSON object for Simulation
-		jsonObject.put("demo", "value");
+//Arbitrary JSON object for Simulation
+jsonObject.put("demo", "value");
 		
 		
-		//Creating keyvalue pairs
-		ds.create("lulu", jsonObject,2);
-		ds.create("msdhoni",jsonObject);
-		ds.create("vicky", jsonObject);
-		ds.create("lulu", jsonObject);
+//Creating keyvalue pairs
+ds.create("lulu", jsonObject,2);
+ds.create("msdhoni",jsonObject);
+ds.create("vicky", jsonObject);
+ds.create("lulu", jsonObject);
 
 		
-		//fetching all Pairs
-		ds.getAll();
-		
-		//Getting Pair using Key
-		System.out.println(ds.get("vckyi"));
-		System.out.println(ds.get("vicky"));
-		System.out.println(ds.get("vcyi"));
+//fetching all Pairs
+ds.getAll();
+
+//Getting Pair using Key
+System.out.println(ds.get("vckyi"));
+System.out.println(ds.get("vicky"));
+System.out.println(ds.get("vcyi"));
     
-    //delete operation
-    ds.delete("vicky");
+//delete operation
+ds.delete("vicky");
     
-    //Finally Saving evrythng to the file
-		ds.saveAndClose();
+//Finally Saving evrythng to the file
+ds.saveAndClose();
 
 ```
 
 
 
 
-
-
-#
+#UTILITY METHODS TO SUPPORT DATASTORE
 
 ```java
 private void createFile(String path)
@@ -199,6 +197,11 @@ private void createFile(String path)
 private void initialize_table()
 ```
 - Used to initialize a hashtable which will be invoked by the constructor
+
+### Parameters:
+`NOTHING`
+
+#
 
 ```java
 private Boolean LoadData(File file)

@@ -1,8 +1,8 @@
-# Datastore
+# DATASTORE
 
 - Datastore is a Java library for dealing with file based key-value pairs supporting the basic CRD (Create, Read and Delete) Operations.
 
-- Implementation is pretty much similiar to [HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html) in the sense that it uses **Hashtable** and **Seperate Chaining** Collision technique.
+- Implementation is pretty much similiar to [HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html) in the sense that it uses ``Hashtable`` and ```Seperate Chaining Collision``` technique.
 
 - It can be initialized using an optional file path. If one is not provided, it will reliably create itself in the reasonable location.
 
@@ -44,7 +44,7 @@ public DataStore()
 #### Parameters:
 `NOTHING`
 
-
+#
 
 ## Usage
 
@@ -55,8 +55,96 @@ DataStore ds=new DataStore();
 DataStore ds=new DataStore("E:\Java Projects");
 ```
 
+#
 
-## All Available Methods
+## Methods available to use
+
+
+```java
+public synchronized Boolean create(String key, JSONObject value,int TTL)
+```
+- Associates the specified value with the specified key in this Datastore. 
+- If the datastore previously contained a mapping for the key, then creation will get fail displaying appropriate message.
+
+### Parameters:
+`key` - key with which the specified value is to be associated.  
+`value` - value in the form of JSON associated with the specified key.  
+`ttl` - The Amount of time in seconds that the pair should be available to read / delete.  
+
+( ```NOTE:```   ttl parameter is optional )
+
+
+### Returns:
+`true` - if the creation is successfull.    
+`false` - if the creation fails.  
+
+
+```java
+public synchronized Boolean delete(String key)
+```
+- Removes the mapping for the specified key from this datastore if present. 
+- If the key is not present, then appropriate error message will be displayed.
+
+### Parameters:
+`key` - key whose mapping is to be removed from the datastore.
+
+
+### Returns:
+`true` - if the deletion is successfull.    
+`false` - if the deletion fails.   
+
+
+```java
+public synchronized JSONObject get(String key)
+```
+
+- Returns the value to which the specified key is mapped, or empty JSON with appropriate error message if this map contains no mapping for the key.
+
+### Parameters:
+`key` - key whose mapping is to be retrieved from the datastore.
+
+### Returns:
+`JSON` - the value to which key is associated.  
+
+
+```java
+public void getAll()
+```
+- Fetches and prints all the available key-value mappings in the datastore.
+
+```java
+public JSONObject readJSON()
+```
+- An Utility function to read JSON from STDIN ( Console )
+
+### Parameters:
+`NOTHING`
+
+### Returns:
+`JSON` - the input read from the console.  
+
+
+```java
+public void saveAndClose()
+```
+- This method is similiar to destructor which needs to be called before closing datastore.
+- If this method is not called, new data will not be saved to the file.
+- This method handles operation such as deleting TTL enabled key-value pairs and stopping TTL monitor thread.
+
+### Parameters:
+`NOTHING`
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```java
 private void createFile(String path)
@@ -83,6 +171,7 @@ private Boolean LoadData(File file)
 `file` - the file from which data needs to be retrieved.
 
 
+#
 
 ```java
 private int getHashIndex(String key)
@@ -96,20 +185,6 @@ private int getHashIndex(String key)
 ### Returns:
 `int` - Index of the Key
 
-```java
-public synchronized Boolean create(String key, JSONObject value,int TTL)
-```
-- Associates the specified value with the specified key in this Datastore. 
-- If the datastore previously contained a mapping for the key, then creation will get fail displaying appropriate message.
-
-### Parameters:
-`key` - key with which the specified value is to be associated.
-`value` - value in the form of JSON associated with the specified key.
-`ttl` - The Amount of time in seconds that the pair should be available to read / delete.
-
-### Returns:
-`true` - if the creation is successfull
-`false` - if the creation is failed.
 
 
 

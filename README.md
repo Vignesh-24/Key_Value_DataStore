@@ -18,7 +18,19 @@
 
 
 
+### FIELDS
 
+`private String filepath` - The name of the file datastored associated with.
+
+`private ArrayList<DataPair> hashtable` - the hashtable which datastore uses.
+
+`private long file_size` - holds the current file size.
+
+`private TTL_Monitor monitor` - Inner class to monitor Time-To-Live Property.
+
+`private int flag` - Used to start and stop TTL thread.
+
+#
 
 ### CONSTRUCTORS
 
@@ -68,14 +80,17 @@ public synchronized Boolean create(String key, JSONObject value,int TTL)
 
 ### Parameters:
 `key` - key with which the specified value is to be associated.  
+
 `value` - value in the form of JSON associated with the specified key.  
+
 `ttl` - The Amount of time in seconds that the pair should be available to read / delete.  
 
 ( ```NOTE:```   ttl parameter is optional )
 
 
 ### Returns:
-`true` - if the creation is successfull.    
+`true` - if the creation is successfull.
+
 `false` - if the creation fails.  
 
 #
@@ -91,7 +106,8 @@ public synchronized Boolean delete(String key)
 
 
 ### Returns:
-`true` - if the deletion is successfull.    
+`true` - if the deletion is successfull. 
+
 `false` - if the deletion fails.   
 
 #
@@ -180,6 +196,7 @@ ds.saveAndClose();
 
 
 
+#
 
 # UTILITY METHODS TO SUPPORT DATASTORE
 
@@ -214,6 +231,7 @@ private Boolean LoadData(File file)
 
 ### Returns:
 `true` - if the load is successful.  
+
 `false` - if load fails.   
 
 #
@@ -230,6 +248,7 @@ private Boolean save(File filename)
 
 ### Returns:
 `true` - if the data is stored to the file.   
+
 `false` - if save operation fails.  
 
 #
@@ -294,6 +313,8 @@ public DataPair getNext()
 ```java
 public void setNext(DataPair next)
 ```
+
+
 
 
 

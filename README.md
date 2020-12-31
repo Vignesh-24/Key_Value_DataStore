@@ -12,7 +12,9 @@ Datastore is a Java library for dealing with file based key-value pairs supporti
 
 `private String filepath` - The name of the file datastored associated with.
 
-`private ArrayList<DataPair> hashtable` - the hashtable of `size 32` (each index - head of linkedlist to handle collisions ( Seperate Chaining )).
+`private ArrayList<DataPair> hashtable` - the hashtable of `size 32`   
+
+( each index acts as head of linkedlist to handle collisions ( Seperate Chaining ) ).  
 
 `private long file_size` - holds the current file size.
 

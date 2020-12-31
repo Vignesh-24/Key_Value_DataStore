@@ -181,7 +181,7 @@ ds.saveAndClose();
 
 
 
-#UTILITY METHODS TO SUPPORT DATASTORE
+# UTILITY METHODS TO SUPPORT DATASTORE
 
 ```java
 private void createFile(String path)
@@ -245,6 +245,55 @@ private int getHashIndex(String key)
 
 ### Returns:
 `int` - Index of the Key
+
+
+
+# ```Class DataPair```
+
+### FIELDS
+
+`private String key` - the key name
+
+`private JSONObject value` - the value in JSON format
+
+`private int TTL` - Time-To Live Property in seconds
+
+`private DataPair next` - To hold next Datapair
+
+
+### CONSTRUCTOR
+
+```java
+public DataPair(String key,JSONObject value,int ttl)
+```
+
+
+### METHODS AVAILABLE
+
+```java
+public String getKey()
+```
+```java
+public void setKey(String key)
+```
+```java
+public JSONObject getValue()
+```
+```java
+public void setValue(JSONObject value)
+```
+```java
+public int getTTL()
+```
+```java
+public void setTTL(int tTL)
+```
+```java
+public DataPair getNext()
+```
+```java
+public void setNext(DataPair next)
+```
 
 
 

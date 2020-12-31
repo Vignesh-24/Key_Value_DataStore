@@ -2,7 +2,7 @@
 
 - Datastore is a Java library for dealing with file based key-value pairs supporting the basic CRD (Create, Read and Delete) Operations.
 
-- Implementation is pretty much similiar to [HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html) in the sense that it uses ``Hashtable`` and ```Seperate Chaining Collision``` technique.
+- Implementation is pretty much similiar to [HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html) in the sense that it uses `Hashtable` and `Seperate Chaining Collision` technique.
 
 - It can be initialized using an optional file path. If one is not provided, it will reliably create itself in the reasonable location.
 
@@ -78,6 +78,7 @@ public synchronized Boolean create(String key, JSONObject value,int TTL)
 `true` - if the creation is successfull.    
 `false` - if the creation fails.  
 
+#
 
 ```java
 public synchronized Boolean delete(String key)
@@ -93,6 +94,7 @@ public synchronized Boolean delete(String key)
 `true` - if the deletion is successfull.    
 `false` - if the deletion fails.   
 
+#
 
 ```java
 public synchronized JSONObject get(String key)
@@ -106,11 +108,17 @@ public synchronized JSONObject get(String key)
 ### Returns:
 `JSON` - the value to which key is associated.  
 
+#
 
 ```java
 public void getAll()
 ```
 - Fetches and prints all the available key-value mappings in the datastore.
+
+### Parameters:
+`NOTHING`
+
+#
 
 ```java
 public JSONObject readJSON()
@@ -123,6 +131,7 @@ public JSONObject readJSON()
 ### Returns:
 `JSON` - the input read from the console.  
 
+#
 
 ```java
 public void saveAndClose()
@@ -134,17 +143,47 @@ public void saveAndClose()
 ### Parameters:
 `NOTHING`
 
+#
+
+
+## Usage
+
+```java
+
+JSONObject jsonObject=new JSONObject();
+		//Arbitrary JSON object for Simulation
+		jsonObject.put("demo", "value");
+		
+		
+		//Creating keyvalue pairs
+		ds.create("lulu", jsonObject,2);
+		ds.create("msdhoni",jsonObject);
+		ds.create("vicky", jsonObject);
+		ds.create("lulu", jsonObject);
+
+		
+		//fetching all Pairs
+		ds.getAll();
+		
+		//Getting Pair using Key
+		System.out.println(ds.get("vckyi"));
+		System.out.println(ds.get("vicky"));
+		System.out.println(ds.get("vcyi"));
+    
+    //delete operation
+    ds.delete("vicky");
+    
+    //Finally Saving evrythng to the file
+		ds.saveAndClose();
+
+```
 
 
 
 
 
 
-
-
-
-
-
+#
 
 ```java
 private void createFile(String path)
@@ -154,7 +193,7 @@ private void createFile(String path)
 ### Parameters:
 `path` - the absolute path where file needs to be created / retrieved.
 
-
+#
 
 ```java
 private void initialize_table()
@@ -170,6 +209,25 @@ private Boolean LoadData(File file)
 ### Parameters:
 `file` - the file from which data needs to be retrieved.
 
+### Returns:
+`true` - if the load is successful.  
+`false` - if load fails.   
+
+#
+
+```java
+private Boolean save(File filename)
+```
+
+- Saves the entire contents of datastore to the file mentioned in the arguments.
+- It will be invoked by saveandclose() method.
+
+### Parameters:
+`file` - the file to which data needs to be saved.
+
+### Returns:
+`true` - if the data is stored to the file.   
+`false` - if save operation fails.  
 
 #
 

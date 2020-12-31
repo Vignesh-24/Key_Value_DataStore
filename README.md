@@ -1,6 +1,6 @@
 # DATASTORE
 
-Datastore is a Java library for dealing with file based key-value pairs supporting the basic CRD (Create, Read and Delete) Operations. Implementation is pretty much similiar to [HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html) in the sense that it uses `Hashtable` and `Seperate Chaining Collision` technique. It can be initialized using an optional file path. If one is not provided, it will reliably create itself in the reasonable location. Key string capped at `32 characters` and Value must be a `JSON object capped at 16KB`. Every key supports `setting a Time-To-Live property` when it is created. This property is optional. If provided, it will be evaluated as an integer defining the number of seconds. Once the Time-To-Live for a key has expired, the key will no longer be available for Read or Delete operations. Only one process can access the datastore (local file) at a time. `Thread safe` as all CRD methods are Synchronized.
+Datastore is a Java library for dealing with file based key-value pairs supporting the basic CRD (Create, Read and Delete) Operations. `Implementation` is pretty much `similiar` to [HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html) in the sense that it uses `Hashtable` and `Seperate Chaining Collision` technique. It can be initialized using an optional file path. If one is not provided, it will reliably create itself in the reasonable location. Key string capped at `32 characters` and Value must be a `JSON object capped at 16KB`. Every key supports `setting a Time-To-Live property` when it is created. This property is optional. If provided, it will be evaluated as an integer defining the number of seconds. Once the Time-To-Live for a key has expired, the key will no longer be available for Read or Delete operations. Only one process can access the datastore (local file) at a time. `Thread safe` as all CRD methods are Synchronized.
 
 #
 
@@ -12,7 +12,7 @@ Datastore is a Java library for dealing with file based key-value pairs supporti
 
 `private String filepath` - The name of the file datastored associated with.
 
-`private ArrayList<DataPair> hashtable` - the hashtable of `size 32` in which each index is used as head of linkedlist to handle collisions ( Seperate Chaining ).
+`private ArrayList<DataPair> hashtable` - the hashtable of `size 32` (each index - head of linkedlist to handle collisions ( Seperate Chaining )).
 
 `private long file_size` - holds the current file size.
 
